@@ -1,7 +1,7 @@
 /* -*- Mode: JS2; indent-tabs-mode: nil; js2-basic-offset: 4 -*- */
 /* vim: set et ts=4 sw=4: */
 /*
- * Copyright (c) 2015 Marcus Lundblad.
+ * Copyright (c) 2015 Marcus Lundblad
  *
  * GNOME Maps is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the
@@ -20,14 +20,25 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const OSMTag = imports.osmTag;
+const Lang = imports.lang;
 
-function start() {
-    print ("Start...");
-    // TODO: handle some basic CLI args to compose simple OSM changesets
+const OSMTag = new Lang.Class({
+    Name: 'OSMTag',
 
-    let tag = new OSMTag.OSMTag({key: 'foo', value: 'bar'});
+    _init: function(params) {
+	this._key = params.key;
+	this._value = params.value;
+    },
 
-    print (tag.toString());
-}
+    get name() {
+	return this._name;
+    },
 
+    get value() {
+	return this._value;
+    },
+
+    toString: function() {
+	return 'tag k=' + this._key + ' v=' + this._value;
+    }
+})
