@@ -21,6 +21,7 @@
  */
 
 const OSMTag = imports.osmTag;
+const OSMNode = imports.osmNode;
 
 function start() {
     print ("Start...");
@@ -29,5 +30,12 @@ function start() {
     let tag = new OSMTag.OSMTag({key: 'foo', value: 'bar'});
 
     print (tag.toString());
+
+    let node = new OSMNode.OSMNode({changeset: 42, lat: 59.00000, lon: 16.000000});
+    node.setTag(new OSMTag.OSMTag({key: 'name', value: 'FooPub'}));
+    node.setTag(new OSMTag.OSMTag({key: 'amenity', value: 'pub'}));
+		
+    
+    print (node.toString());
 }
 

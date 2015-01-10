@@ -30,8 +30,8 @@ const OSMTag = new Lang.Class({
 	this._value = params.value;
     },
 
-    get name() {
-	return this._name;
+    get key() {
+	return this._key;
     },
 
     get value() {
