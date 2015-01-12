@@ -47,7 +47,7 @@ const OSMObject = new Lang.Class({
     },
 
     setTag: function(tag) {
-	this._tags[tag] = tag;
+	this._tags[tag.key] = tag;
     },    
     
     getTag: function(key) {
