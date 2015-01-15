@@ -64,4 +64,3 @@ const OSMObject = new Lang.Class({
 	delete this._tags[key];
     }
 });
-
