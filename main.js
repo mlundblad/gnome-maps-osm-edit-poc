@@ -20,22 +20,21 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const OSMTag = imports.osmTag;
 const OSMNode = imports.osmNode;
 
 function start() {
     print ("Start...");
     // TODO: handle some basic CLI args to compose simple OSM changesets
 
-    let tag = new OSMTag.OSMTag({key: 'foo', value: 'bar'});
+    let node = new OSMNode.OSMNode({changeset: 42, lat: 59.00000, lon: 16.000000,
+				    tags: {name: 'foo', amenity: 'pub'}});
+    // node.setTag('name', 'FooPub');
+    // node.setTag('amenity', 'pub');
+    node.setTag('foo', 'bar');
 
-    print (tag.toString());
+    print (node);
 
-    let node = new OSMNode.OSMNode({changeset: 42, lat: 59.00000, lon: 16.000000});
-    node.setTag(new OSMTag.OSMTag({key: 'name', value: 'FooPub'}));
-    node.setTag(new OSMTag.OSMTag({key: 'amenity', value: 'pub'}));
-		
-    
-    print (node.toString());
+    node.deleteTag('foo');
+
+    print (node);
 }
-

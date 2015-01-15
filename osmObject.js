@@ -24,14 +24,20 @@ const Lang = imports.lang;
 
 const OSMObject = new Lang.Class({
     Name: 'OSMObject',
+    Abstract: true,
 
     _init: function(params) {
 	this._changeset = params.changeset;
 
 	if (params.id)
 	    this._id = params.id;
-
-	this._tags = {};
+	else
+	    this._id = undefined;
+	
+	if (params.tags)
+	    this._tags = params.tags;
+	else
+	    this._tags = {}
     },
     
     get id() {
@@ -46,12 +52,16 @@ const OSMObject = new Lang.Class({
 	return this._changeset;
     },
 
-    setTag: function(tag) {
-	this._tags[tag.key] = tag;
+    setTag: function(key, value) {
+	this._tags[key] = value;
     },    
     
     getTag: function(key) {
 	return this._tags[key];
+    },
+
+    deleteTag: function(key) {
+	delete this._tags[key];
     }
 });
 

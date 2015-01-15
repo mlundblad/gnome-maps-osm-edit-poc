@@ -45,10 +45,10 @@ const OSMNode = new Lang.Class({
 	let s = 'node changeset: ' + this._changeset + ' lat: ' + this._lat +
 	    ' lon: ' + this._lon;
 
-	for (var tag in this._tags) {
+	for (var v in this._tags) {
 	    s += '\n';
 	    s += '\t';
-	    s += tag.toString();
+	    s += 'tag: k=' + v + ', v=' + this.getTag(v);
 	}
 	
 	return s;
