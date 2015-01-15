@@ -22,6 +22,7 @@
 
 const Lang = imports.lang;
 const OSMObject = imports.osmObject;
+const OSMConnection = imports.osmConnection;
 
 const OSMNode = new Lang.Class({
     Name: 'OSMNode',
@@ -53,4 +54,13 @@ const OSMNode = new Lang.Class({
 	
 	return s;
     }
-})
+});
+
+OSMNode.download = function(conn, id, callback) {
+    conn.getOSMObject('node', id, callback);
+
+    // TODO: should parse the returned XML into an OSMNode object,
+    // call the callback with that
+}
+
+
